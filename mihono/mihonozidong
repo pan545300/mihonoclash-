@@ -131,7 +131,7 @@ proxy-groups:
   - {name: ChatGPT, <<: *default, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/ChatGPT.png"}
   - {name: GitHub, <<: *default, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/GitHub.png"}
   - {name: Telegram, <<: *default, icon: "https://raw.githubusercontent.com/ifanrBook/ClashConfig/refs/heads/main/icon/telegram.png"}
-  - {name: Twitter(X), <<: *default, icon: "https://raw.githubusercontent.com/Lanlan13-14/Rules/refs/heads/main/icon/twitter.png"}
+  - {name: Twitter, <<: *default, icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Twitter.png"}
   - {name: Facebook, <<: *default, icon: "https://raw.githubusercontent.com/Lanlan13-14/Rules/refs/heads/main/icon/facebook.png"}
   - {name: Game, <<: *default, icon: "https://raw.githubusercontent.com/Lanlan13-14/Rules/refs/heads/main/icon/game.png"}
   - {name: YouTube, <<: *default, icon: "https://raw.githubusercontent.com/Lanlan13-14/Rules/refs/heads/main/icon/youtube.png"}
@@ -171,7 +171,7 @@ proxy-groups:
     filter: "(?=.*(广港|香港|HK|Hong Kong|🇭🇰|HongKong)).*$"
     
   - name: 香港-自动
-    icon: https://raw.githubusercontent.com/ifanrBook/ClashConfig/refs/heads/main/icon/auto.png
+    icon: https://raw.githubusercontent.com/Lanlan13-14/Rules/refs/heads/main/icon/Hongkong.png
     type: url-test
     include-all: true
     tolerance: 50
@@ -193,7 +193,7 @@ proxy-groups:
     include-all: true
     filter: "(?=.*(广台|台湾|台灣|TW|Tai Wan|🇹🇼|🇨🇳|TaiWan|Taiwan)).*$"
   - name: 台湾-自动
-    icon: https://raw.githubusercontent.com/ifanrBook/ClashConfig/refs/heads/main/icon/auto.png
+    icon: https://raw.githubusercontent.com/Lanlan13-14/Rules/refs/heads/main/icon/Taiwan_China.png
     type: url-test
     include-all: true
     tolerance: 50
@@ -215,7 +215,7 @@ proxy-groups:
     include-all: true
     filter: "(?=.*(广日|日本|JP|川日|东京|大阪|泉日|埼玉|沪日|深日|🇯🇵|Japan)).*$"
   - name: 日本-自动
-    icon: https://raw.githubusercontent.com/ifanrBook/ClashConfig/refs/heads/main/icon/auto.png
+    icon: https://raw.githubusercontent.com/Lanlan13-14/Rules/refs/heads/main/icon/Japan.png
     type: url-test
     include-all: true
     tolerance: 50
@@ -237,7 +237,7 @@ proxy-groups:
     include-all: true
     filter: "(?=.*(广新|新加坡|SG|坡|狮城|🇸🇬|Singapore)).*$"
   - name: 新加坡-自动
-    icon: https://raw.githubusercontent.com/ifanrBook/ClashConfig/refs/heads/main/icon/auto.png
+    icon: https://raw.githubusercontent.com/Lanlan13-14/Rules/refs/heads/main/icon/Singapore.png
     type: url-test
     include-all: true
     tolerance: 50
@@ -259,7 +259,7 @@ proxy-groups:
     include-all: true
     filter: "(?=.*(广韩|韩国|韓國|KR|首尔|春川|🇰🇷|Korea)).*$"
   - name: 韩国-自动
-    icon: https://raw.githubusercontent.com/ifanrBook/ClashConfig/refs/heads/main/icon/auto.png
+    icon: https://raw.githubusercontent.com/Lanlan13-14/Rules/refs/heads/main/icon/Korea.png
     type: url-test
     include-all: true
     tolerance: 50
@@ -281,7 +281,7 @@ proxy-groups:
     include-all: true
     filter: "(?=.*(广美|美|US|纽约|波特兰|达拉斯|俄勒|凤凰城|费利蒙|拉斯|洛杉|圣何塞|圣克拉|西雅|芝加|🇺🇸|United States)).*$"
   - name: 美国-自动
-    icon: https://raw.githubusercontent.com/ifanrBook/ClashConfig/refs/heads/main/icon/auto.png
+    icon: https://raw.githubusercontent.com/Lanlan13-14/Rules/refs/heads/main/icon/America.png
     type: url-test
     include-all: true
     tolerance: 50
@@ -303,7 +303,7 @@ proxy-groups:
     include-all: true
     filter: "(?=.*(英国|英|伦敦|UK|United Kingdom|🇬🇧|London)).*$"
   - name: 英国-自动
-    icon: https://raw.githubusercontent.com/ifanrBook/ClashConfig/refs/heads/main/icon/auto.png
+    icon: https://raw.githubusercontent.com/ifanrBook/ClashConfig/refs/heads/main/icon/uk.png
     type: url-test
     include-all: true
     tolerance: 50
@@ -325,7 +325,7 @@ rules:
   - RULE-SET,GitHub / Domain,GitHub
   - RULE-SET,Telegram / Domain,Telegram
   - RULE-SET,Telegram / IP,Telegram,no-resolve
-  - RULE-SET,Twitter / Domain,Twitter(X)
+  - RULE-SET,Twitter / Domain,Twitter
   - RULE-SET,Facebook / Domain,Facebook
   - RULE-SET,Apple / Domain,Apple
   - RULE-SET,Apple-CN / Domain,Apple  
@@ -360,7 +360,7 @@ rule-providers:
   GitHub / Domain: {<<: *domain, url: "https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/github.mrs"}
   Telegram / Domain: {<<: *domain, url: "https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/telegram.mrs"}  
   Telegram / IP: {<<: *ip, url: "https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geoip/telegram.mrs"}
-  Twitter / Domain: {<<: *domain, url: "https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/x.mrs"}
+  Twitter / Domain: {<<: *domain, url: "https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/Twitter.mrs"}
   Facebook / Domain: {<<: *domain, url: "https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/facebook.mrs"}
   Apple-CN / Domain: {<<: *domain, url: "https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/apple-cn.mrs"}
   Apple / Domain: {<<: *domain, url: "https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/apple.mrs"} 
