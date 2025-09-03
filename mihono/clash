@@ -1,1 +1,382 @@
 
+proxy-providers:
+  黑心🖤寡妇:
+    url: "https://wk-auto-update-3e7.pages.dev/sub/full-normal/fb69b4ae-29b0-4597-b72e-53b66b8bc499?app=clash#BPB-Full-Normal"
+    type: http
+    interval: 86400
+    health-check: {enable: true,url: "https://www.gstatic.com/generate_204",interval: 300}
+    override:
+      additional-prefix: "[黑心🖤寡妇]"
+  紅杏云:
+    url: ""
+    type: http
+    interval: 86400
+    health-check: {enable: true,url: "https://www.gstatic.com/generate_204",interval: 300}
+    override:
+      additional-prefix: "紅杏云"   
+      
+  BPB面板:
+    url: ""
+    type: http
+    interval: 86400
+    health-check: {enable: true,url: "https://www.gstatic.com/generate_204",interval: 300}
+    override:
+      additional-prefix: "BPB面板" 
+proxies:
+rule-providers:
+  private:
+    url: >-
+      https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/private.yaml
+    path: ./ruleset/private.yaml
+    behavior: domain
+    interval: 86400
+    format: yaml
+    type: http
+  cn_domain:
+    url: >-
+      https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/cn.yaml
+    path: ./ruleset/cn_domain.yaml
+    behavior: domain
+    interval: 86400
+    format: yaml
+    type: http
+  telegram_domain:
+    url: >-
+      https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/telegram.yaml
+    path: ./ruleset/telegram_domain.yaml
+    behavior: domain
+    interval: 86400
+    format: yaml
+    type: http
+  google_domain:
+    url: >-
+      https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/google.yaml
+    path: ./ruleset/google_domain.yaml
+    behavior: domain
+    interval: 86400
+    format: yaml
+    type: http
+  geolocation-!cn:
+    url: >-
+      https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/geolocation-!cn.yaml
+    path: ./ruleset/geolocation-!cn.yaml
+    behavior: domain
+    interval: 86400
+    format: yaml
+    type: http
+  cn_ip:
+    url: >-
+      https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/cn.yaml
+    path: ./ruleset/cn_ip.yaml
+    behavior: ipcidr
+    interval: 86400
+    format: yaml
+    type: http
+  telegram_ip:
+    url: >-
+      https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/telegram.yaml
+    path: ./ruleset/telegram_ip.yaml
+    behavior: ipcidr
+    interval: 86400
+    format: yaml
+    type: http
+  google_ip:
+    url: >-
+      https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/google.yaml
+    path: ./ruleset/google_ip.yaml
+    behavior: ipcidr
+    interval: 86400
+    format: yaml
+    type: http
+  bing:
+    url: >-
+      https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Bing/Bing.yaml
+    path: ./ruleset/bing.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
+    type: http
+  copilot:
+    url: >-
+      https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Copilot/Copilot.yaml
+    path: ./ruleset/copilot.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
+    type: http
+  claude:
+    url: >-
+      https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Claude/Claude.yaml
+    path: ./ruleset/claude.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
+    type: http
+  bard:
+    url: >-
+      https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/BardAI/BardAI.yaml
+    path: ./ruleset/bard.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
+    type: http
+  openai:
+    url: >-
+      https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OpenAI/OpenAI.yaml
+    path: ./ruleset/openai.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
+    type: http
+  steam:
+    url: >-
+      https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Steam/Steam.yaml
+    path: ./ruleset/steam.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
+    type: http
+proxy-groups:
+  - icon: 'https://raw.githubusercontent.com/Orz-3/mini/master/Color/China.png'
+    name: 全球加速
+    type: select
+    include-all: true
+    tolerance: 10
+    proxies:
+      - AUTO
+      - HK Auto
+      - UK Auto
+      - SG Auto
+      - JP Auto
+      - US Auto
+
+  - icon: 'https://raw.githubusercontent.com/Orz-3/mini/master/Color/SSID.png'
+    include-all: true
+    exclude-filter: (?i)GB|Traffic|Expire|Premium|全球加速|频道|订阅|ISP|流量|到期|重置
+    name: 自动选择
+    type: select
+    proxies:
+      - AUTO
+      - HK Auto
+      - UK Auto
+      - SG Auto
+      - JP Auto
+      - US Auto
+  - icon: 'https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/Static.png'
+    include-all: true
+    exclude-filter: (?i)GB|Traffic|Expire|Premium|全球加速|频道|订阅|ISP|流量|到期|重置
+    name: PROXY
+    type: select
+    proxies:
+      - AUTO
+      - UK Auto
+      - HK Auto
+      - SG Auto
+      - JP Auto
+      - US Auto
+  - icon: 'https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/Urltest.png'
+    include-all: true
+    exclude-filter: (?i)GB|Traffic|Expire|Premium|全球加速|频道|订阅|ISP|流量|到期|重置
+    name: AUTO
+    type: url-test
+  - icon: 'https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/OpenAI.png'
+    name: AIGC
+    type: select
+    proxies:
+      - HK Auto
+      - UK Auto
+      - SG Auto
+      - JP Auto
+      - US Auto
+    
+  - icon: 'https://gcore.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/QQ.png'
+    name: QQ喝茶
+    type: url-test
+    interval: 300
+    timeout: 3000
+    url: https://www.google.com/generate_204
+    lazy: true
+    include-all: true
+    tolerance: 10
+    proxies:
+      - HK Auto
+      - UK Auto
+      - SG Auto
+      - JP Auto
+      - US Auto
+  - icon: 'https://raw.githubusercontent.com/Lanlan13-14/Rules/refs/heads/main/icon/game.png'
+    name: 快手平台
+    type: url-test
+    include-all: true
+    tolerance: 10
+    proxies:
+      - HK Auto
+      - UK Auto
+      - SG Auto
+      - JP Auto
+      - US Auto
+  - icon: 'https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/Telegram.png'
+    name: Telegram
+    type: url-test
+    include-all: true
+    tolerance: 10
+    proxies:
+      - HK Auto
+      - UK Auto
+      - SG Auto
+      - JP Auto
+      - US Auto
+  - icon: https://gh-proxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
+    name: youtube
+    type: select
+    include-all: true
+    tolerance: 10
+    proxies:
+      - HK Auto
+      - UK Auto
+      - SG Auto
+      - JP Auto
+      - US Auto
+  - icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/GitHub.png
+    name: Github
+    type: select
+    include-all: true
+    tolerance: 10
+    proxies:
+      - HK Auto
+      - UK Auto
+      - SG Auto
+      - JP Auto
+      - US Auto
+  - icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Google.png
+    exclude-filter: (?i)GB|Traffic|Expire|Premium|全球加速|频道|订阅|ISP|流量|到期|重置
+    name: Google
+    type: select
+    include-all: true
+    tolerance: 10
+    proxies:
+      - HK Auto
+      - UK Auto
+      - SG Auto
+      - JP Auto
+      - US Auto
+  - icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
+    include-all: true
+    exclude-filter: (?i)GB|Traffic|Expire|Premium|全球加速|频道|订阅|ISP|流量|到期|重置
+    filter: "(?i)香港|Hong🇭🇰Kong|HK|\U0001F1ED\U0001F1F0"
+    name: HK Auto
+    type: url-test
+    interval: 300
+  - icon: 'https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/SG.png'
+    include-all: true
+    exclude-filter: (?i)GB|Traffic|Expire|Premium|全球加速|频道|订阅|ISP|流量|到期|重置
+    filter: "(?i)新加坡|🇸🇬Singapore|\U0001F1F8\U0001F1EC"
+    name: SG Auto
+    type: url-test
+    interval: 300
+  - icon: 'https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/JP.png'
+    include-all: true
+    exclude-filter: (?i)GB|Traffic|Expire|Premium|全球加速|频道|订阅|ISP|流量|到期|重置
+    filter: "(?i)日本|🇯🇵Japan|\U0001F1EF\U0001F1F5"
+    name: JP Auto
+    type: url-test
+    interval: 300
+  - icon: 'https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/US.png'
+    include-all: true
+    exclude-filter: (?i)GB|Traffic|Expire|Premium|全球加速|频道|订阅|ISP|流量|到期|重置
+    filter: "(?i)美国|🇺🇸USA|\U0001F1FA\U0001F1F8"
+    name: US Auto
+    type: url-test
+    interval: 300
+  - icon: 'https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/Global.png'
+    include-all: true
+    exclude-filter: (?=.*(广港|香港|HK🇭🇰|Hong Kong|HongKong)).*$|全球加速|频道|订阅|ISP|流量|到期|重置
+    proxies:
+      - 全球加速
+      - PROXY
+      - AUTO
+      - AIGC
+      - QQ喝茶
+      - 快手平台
+      - Telegram
+      - youtube
+      - Github
+      - Google
+      - HK Auto
+      - UK Auto
+      - SG Auto
+      - JP Auto
+      - US Auto
+    name: GLOBAL
+    type: select
+  - icon: 'https://raw.githubusercontent.com/ifanrBook/ClashConfig/refs/heads/main/icon/uk.png'
+    name: UK Auto
+    type: url-test
+    include-all: true
+    tolerance: 50
+    interval: 180
+    filter: (?=.*(英国|🇬🇧|伦敦|UK|United Kingdom|London)).*$|全球加速|频道|订阅|ISP|流量|到期|重置
+UK: &UK '^(?=.*(英国|🇬🇧|伦敦|UK|United Kingdom|London)).*$'
+HK: &HK '^(?=.*((?i)🇭🇰|香港|(\b(HK|Hong)\b)))(?!.*((?i)(\b(GAME)\b))).*$'
+TW: &TW '^(?=.*((?i)🇹🇼|台湾|(\b(TW|Tai|Taiwan)\b)))(?!.*((?i)(\b(GAME)\b))).*$'
+JP: &JP '^(?=.*((?i)🇯🇵|日本|川日|东京|大阪|泉日|埼玉|(\b(JP|Japan)\b)))(?!.*((?i)(\b(GAME)\b))).*$'
+SG: &SG '^(?=.*((?i)🇸🇬|新加坡|狮|(\b(SG|Singapore)\b)))(?!.*((?i)(\b(GAME)\b))).*$'
+US: &US '^(?=.*((?i)🇺🇸|美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|(\b(US|United States)\b)(\b(GAME)\b))).*$'
+All: &All '^(?=.*(.))(?!.*((?i)(\b(USE|USED|TOTAL|Traffic|Expire|EMAIL|Panel|Channel|Author)\b|(\d{4}-\d{2}-\d{2}|\d+G)))).*$'
+name: 
+ - icon: https://gh-proxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png,
+   type: select
+   proxies: [HK-Auto, HK-FallBack, HK-LoadBalance] 
+   include-all-providers: 
+    true, filter: *HK
+ - name:
+   TaiWan, icon:
+     icon: https://gh-proxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png,
+     type: select, 
+     proxies: 
+      [TW-Auto, TW-FallBack, TW-LoadBalance]
+   include-all-providers: 
+    true, filter: *TW
+ - name:
+   Japan, icon: 
+     icon: https://gh-proxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png, 
+     type: select
+     proxies: 
+      [JP-Auto, JP-FallBack, JP-LoadBalance]
+     include-all-providers:
+       true, filter: *JP
+ - name:
+   Singapore, icon:
+     icon: https://gh-proxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png,
+     type: select
+     proxies:
+      [SG-Auto, SG-FallBack, SG-LoadBalance]
+     include-all-providers:
+         true, filter: *SG
+ - name:
+   America, icon: 
+    https://gh-proxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png, type: select,
+    proxies:
+     [US-Auto, US-FallBack, US-LoadBalance]
+    include-all-providers:
+       true, filter: *US
+
+rules:
+  - 'PROCESS-NAME,subs-check.exe,DIRECT'
+  - 'PROCESS-NAME,subs-check,DIRECT'
+  - 'RULE-SET,private,DIRECT'
+  - 'RULE-SET,bing,AIGC'
+  - 'RULE-SET,copilot,AIGC'
+  - 'RULE-SET,bard,AIGC'
+  - 'RULE-SET,openai,AIGC'
+  - 'RULE-SET,claude,AIGC'
+  - 'RULE-SET,steam,PROXY'
+  - 'RULE-SET,telegram_domain,Telegram'
+  - 'RULE-SET,telegram_ip,Telegram'
+  - 'RULE-SET,google_domain,Google'
+  - 'RULE-SET,google_ip,Google'
+  - 'RULE-SET,geolocation-!cn,PROXY'
+  - 'RULE-SET,cn_domain,DIRECT'
+  - 'RULE-SET,cn_ip,DIRECT'
+  - 'MATCH,PROXY'
+  - 'DOMAIN,45.66.60.3,DIRECT'
