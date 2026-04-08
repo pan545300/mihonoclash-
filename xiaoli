@@ -1,0 +1,375 @@
+mixed-port: 7890
+socks-port: 7891
+redir-port: 7892
+allow-lan: false
+mode: rule
+log-level: info
+ipv6: false
+tcp-concurrent: true
+find-process-mode: strict
+unified-delay: false
+global-client-fingerprint: chrome
+external-controller: 127.0.0.1:7892
+secret: "123456"
+proxies:
+
+  - {name: CF官方优选1, server: 104.19.60.217, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选2, server: 172.64.146.230, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选3, server: 173.245.59.107, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选4, server: 172.67.79.198, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选5, server: 8.35.211.129, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选6, server: 8.39.125.247, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选7, server: 172.64.144.234, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选8, server: 198.41.223.195, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选9, server: 8.35.211.239, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选10, server: 162.159.152.211, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选11, server: 173.245.58.189, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选12, server: 198.41.223.4, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选13, server: 8.35.211.237, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选14, server: 104.19.45.54, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选15, server: 172.64.145.111, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选16, server: 173.245.59.203, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选17, server: 172.64.228.6, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选18, server: 173.245.59.73, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选19, server: 172.64.229.249, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选20, server: 104.26.3.95, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选21, server: 173.245.58.236, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选22, server: 162.159.153.222, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选23, server: 104.19.49.180, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选24, server: 108.162.198.186, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选25, server: 173.245.58.126, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选26, server: 108.162.198.154, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选27, server: 172.64.229.32, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选28, server: 108.162.198.60, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选29, server: 173.245.58.26, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选30, server: 162.159.36.28, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选31, server: 8.39.125.107, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选32, server: 198.41.223.71, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选33, server: 162.159.45.31, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选34, server: 104.19.60.133, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选35, server: 104.19.63.214, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选36, server: 8.35.211.155, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选37, server: 8.35.211.36, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选38, server: 162.159.36.137, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选39, server: 104.19.41.20, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选40, server: 8.39.125.195, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选41, server: 172.67.74.223, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选42, server: 108.162.198.234, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选43, server: 172.67.64.75, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选44, server: 198.41.223.97, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选45, server: 198.41.223.213, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选46, server: 108.162.198.217, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选47, server: 104.19.59.21, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选48, server: 173.245.59.203, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选49, server: 108.162.198.217, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选50, server: 108.162.198.201, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选51, server: 172.64.146.17, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选52, server: 108.162.198.118, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选53, server: 162.159.32.10, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选54, server: 8.39.125.27, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选55, server: 172.64.228.199, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选56, server: 172.67.71.61, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选57, server: 104.19.42.226, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选58, server: 173.245.59.166, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选59, server: 162.159.153.158, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选60, server: 162.159.32.95, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选61, server: 198.41.223.93, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选62, server: 108.162.198.128, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选63, server: 162.159.153.200, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选64, server: 162.159.32.120, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选65, server: 108.162.198.248, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选66, server: 8.35.211.0, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选67, server: 173.245.59.222, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选68, server: 172.64.146.131, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选69, server: 108.162.198.77, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选70, server: 104.18.43.82, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选71, server: 162.159.34.20, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选72, server: 104.19.45.61, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选73, server: 104.26.2.204, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选74, server: 172.67.78.252, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选75, server: 162.159.40.198, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选76, server: 104.18.43.148, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选77, server: 8.39.125.45, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选78, server: 173.245.59.121, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选79, server: 172.64.146.211, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选80, server: 104.18.39.78, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选81, server: 104.19.50.73, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选82, server: 172.64.147.230, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选83, server: 8.39.125.41, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选84, server: 172.67.72.164, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选85, server: 104.19.43.246, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选86, server: 172.67.64.89, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选87, server: 162.159.35.250, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选88, server: 172.64.147.45, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选89, server: 198.41.223.184, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选90, server: 104.19.49.252, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选91, server: 8.35.211.95, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选92, server: 108.162.198.132, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选93, server: 108.162.198.99, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选94, server: 173.245.59.3, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选95, server: 104.19.57.2, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选96, server: 172.67.77.61, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选97, server: 104.18.33.172, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选98, server: 172.64.229.201, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: CF官方优选99, server: 104.26.2.170, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}  
+ 
+ 
+
+rule-providers:
+
+
+  private:
+    url: >-
+      https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/private.yaml
+    path: ./ruleset/private.yaml
+    behavior: domain
+    interval: 86400
+    format: yaml
+    type: http
+  YouTube: 
+    url: >-
+       https://cdn.jsdelivr.net/gh/Semporia/Clash@master/Rule/YouTube.yaml
+    path: /ruleset/YouTube.yaml
+    behavior: domain
+    interval: 86400
+    format: yaml
+    type: http
+  cn_domain:
+    url: >-
+      https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/cn.yaml
+    path: ./ruleset/cn_domain.yaml
+    behavior: domain
+    interval: 86400
+    format: yaml
+    type: http
+  telegram_domain:
+    url: >-
+      https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/telegram.yaml
+    path: ./ruleset/telegram_domain.yaml
+    behavior: domain
+    interval: 86400
+    format: yaml
+    type: http
+  google_domain:
+    url: >-
+      https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/google.yaml
+    path: ./ruleset/google_domain.yaml
+    behavior: domain
+    interval: 86400
+    format: yaml
+    type: http
+  geolocation-!cn:
+    url: >-
+      https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/geolocation-!cn.yaml
+    path: ./ruleset/geolocation-!cn.yaml
+    behavior: domain
+    interval: 86400
+    format: yaml
+    type: http
+  cn_ip:
+    url: >-
+      https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/cn.yaml
+    path: ./ruleset/cn_ip.yaml
+    behavior: ipcidr
+    interval: 86400
+    format: yaml
+    type: http
+  telegram_ip:
+    url: >-
+      https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/telegram.yaml
+    path: ./ruleset/telegram_ip.yaml
+    behavior: ipcidr
+    interval: 86400
+    format: yaml
+    type: http
+  google_ip:
+    url: >-
+      https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/google.yaml
+    path: ./ruleset/google_ip.yaml
+    behavior: ipcidr
+    interval: 86400
+    format: yaml
+    type: http
+  bing:
+    url: >-
+      https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Bing/Bing.yaml
+    path: ./ruleset/bing.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
+    type: http
+  copilot:
+    url: >-
+      https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Copilot/Copilot.yaml
+    path: ./ruleset/copilot.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
+    type: http
+  claude:
+    url: >-
+      https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Claude/Claude.yaml
+    path: ./ruleset/claude.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
+    type: http
+  bard:
+    url: >-
+      https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/BardAI/BardAI.yaml
+    path: ./ruleset/bard.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
+    type: http
+  openai:
+    url: >-
+      https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OpenAI/OpenAI.yaml
+    path: ./ruleset/openai.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
+    type: http
+  steam:
+    url: >-
+      https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Steam/Steam.yaml
+    path: ./ruleset/steam.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
+    type: http
+proxy-groups:
+  - icon: 'https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/Static.png'
+    include-all: true
+    name: PROXY
+    type: select
+    proxies:
+      - AUTO
+      - HK AUTO
+      - SG AUTO
+      - JP AUTO
+      - US AUTO
+  - icon: 'https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/Urltest.png'
+    include-all: true
+    name: AUTO
+    type: url-test
+    interval: 300
+  - icon: 'https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/OpenAI.png'
+    include-all: true
+    name: AIGC
+    type: select
+    proxies:
+      - HK AUTO
+      - SG AUTO
+      - JP AUTO
+      - US AUTO
+  - icon: https://gh-proxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
+    name: "YOUTUBE"
+    type: select
+    include-all: true
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    proxies:
+
+      - PROXY
+      - HK AUTO
+      - SG AUTO
+      - JP AUTO
+      - US AUTO
+    
+  - icon: 'https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/Telegram.png'
+    name: Telegram
+    type: select
+    proxies:
+      - PROXY
+      - HK AUTO
+      - SG AUTO
+      - JP AUTO
+      - US AUTO
+  - icon: 'https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/Google.png'
+    name: Google
+    type: select
+    proxies:
+      - PROXY
+      - HK AUTO
+      - SG AUTO
+      - JP AUTO
+      - US AUTO
+  - icon: 'https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/HK.png'
+    include-all: true
+    exclude-filter: (?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置
+    filter: "(?i)香港|Hong Kong|HK|\U0001F1ED\U0001F1F0"
+    name: HK AUTO
+    type: url-test
+    interval: 300
+    
+      
+    
+  - icon: 'https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/SG.png'
+    include-all: true
+    exclude-filter: (?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置
+    filter: "(?i)新加坡|Singapore|\U0001F1F8\U0001F1EC"
+    name: SG AUTO
+    type: url-test
+    interval: 300
+    
+     
+      
+  - icon: 'https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/JP.png'
+    include-all: true
+    exclude-filter: (?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置
+    filter: "(?i)日本|Japan|\U0001F1EF\U0001F1F5"
+    name: JP AUTO
+    type: url-test
+    interval: 300
+    
+
+  - name: 🔯 故障转移
+    type: fallback
+    url: http://www.gstatic.com/generate_204
+    interval: 180
+    proxies:
+      - HK AUTO
+      - SG AUTO
+      - JP AUTO
+      - US AUTO
+      
+  - name: 🔮 负载均衡
+    type: load-balance
+    strategy: consistent-hashing
+    url: http://www.gstatic.com/generate_204
+    interval: 180
+    proxies:
+      - HK AUTO
+      - SG AUTO
+      - JP AUTO
+      - US AUTO
+     
+  - icon: 'https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/US.png'
+    include-all: true
+    exclude-filter: (?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置
+    filter: "(?i)美国|USA|\U0001F1FA\U0001F1F8"
+    name: US AUTO
+    type: url-test
+    interval: 300
+    
+
+rules:
+  - 'PROCESS-NAME,subs-check.exe,DIRECT'
+  - 'PROCESS-NAME,subs-check,DIRECT'
+  - 'RULE-SET,private,DIRECT'
+  - 'RULE-SET,bing,AIGC'
+  - 'RULE-SET,copilot,AIGC'
+  - 'RULE-SET,bard,AIGC'
+  - 'RULE-SET,openai,AIGC'
+  - 'RULE-SET,claude,AIGC'
+  - 'RULE-SET,steam,PROXY'
+  - 'RULE-SET,telegram_domain,Telegram'
+  - 'RULE-SET,telegram_ip,Telegram'
+  - 'RULE-SET,google_domain,Google'
+  - 'RULE-SET,google_ip,Google'
+  - 'RULE-SET,geolocation-!cn,PROXY'
+  - 'RULE-SET,cn_domain,DIRECT'
+  - 'RULE-SET,cn_ip,DIRECT'
+  - 'MATCH,PROXY'
