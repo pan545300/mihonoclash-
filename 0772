@@ -282,7 +282,10 @@ proxies:
 # Node Filters
 FilterHK: &FilterHK 
   '^(?=.*((?i)(香港|🇭🇰)))(?!.*((?i)(🔗|实验))).*$'
-  
+
+FilterVN: &FilterVN
+  '^(?=.*((?i)(越南|🇻🇳)))(?!.*((?i)(🔗|实验))).*$'
+
 FilterJP: &FilterJP 
   '^(?=.*((?i)(日本|🇯🇵)))(?!.*((?i)(🔗|实验))).*$'
 
@@ -311,7 +314,7 @@ FilterTW: &FilterTW
   '^(?=.*((?i)(台湾|🇹🇼)))(?!.*((?i)(🔗|实验))).*$'
 
 FilterOthers: &FilterOthers 
-  '^(?!.*((?i)(香港|🇭🇰|台湾|🇹🇼|日本|🇯🇵|师城|🇸🇬|美国|🇺🇸|德国|🇩🇪|英国|🇬🇧|韩国|🇰🇷|法国|🇫🇷|澳大利亚|🇦🇺)))(?!.*((?i)(🔗|实验))).*$'
+  '^(?!.*((?i)(香港|🇭🇰|越南|🇻🇳|台湾|🇹🇼|日本|🇯🇵|师城|🇸🇬|美国|🇺🇸|德国|🇩🇪|英国|🇬🇧|韩国|🇰🇷|法国|🇫🇷|澳大利亚|🇦🇺)))(?!.*((?i)(🔗|实验))).*$'
 
 FilterExperiment: &FilterExperiment 
   '^(?=.*((?i)(实验)))(?!.*((?i)(🔗))).*$'
@@ -363,6 +366,7 @@ Select_Proxies: &Select_Proxies
             🇯🇵手动选择, 🇰🇷手动选择,  
             🇫🇷手动选择, 🇩🇪手动选择, 
             🇭🇰自动选择, 🇭🇰故障转移, 
+            🇻🇳自动选择, 🇻🇳故障转移,
             🇸🇬自动选择, 🇸🇬故障转移, 
             🇺🇸自动选择, 🇺🇸故障转移,            
             🇯🇵自动选择, 🇯🇵故障转移, 
@@ -389,33 +393,33 @@ proxy-groups:
 
   - name: 🟢故障转移
     type: select
-    proxies: [🇭🇰故障转移, 🇸🇬故障转移, 🇺🇸故障转移, 🇯🇵故障转移, 
+    proxies: [🇭🇰故障转移, 🇻🇳故障转移, 🇸🇬故障转移, 🇺🇸故障转移, 🇯🇵故障转移, 
               🇰🇷故障转移, 🇬🇧故障转移, 🇫🇷故障转移, 🇩🇪故障转移]
     icon: 'https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hijacking.png'
 
   - name: 🟣故障转移
     type: select
-    proxies: [🇭🇰故障转移, 🇸🇬故障转移, 🇺🇸故障转移,  🇯🇵故障转移, 
+    proxies: [🇭🇰故障转移, 🇻🇳故障转移, 🇸🇬故障转移, 🇺🇸故障转移,  🇯🇵故障转移, 
               🇰🇷故障转移, 🇬🇧故障转移, 🇫🇷故障转移, 🇩🇪故障转移]
     icon: 'https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hijacking.png'
 
   - name: 🔶自动选择
     type: select
-    proxies: [🇭🇰自动选择, 🇸🇬自动选择, 🇺🇸自动选择,  🇯🇵自动选择, 
+    proxies: [🇭🇰自动选择, 🇻🇳自动选择, 🇸🇬自动选择, 🇺🇸自动选择,  🇯🇵自动选择, 
               🇰🇷自动选择, 🇬🇧自动选择, 🇫🇷自动选择, 🇩🇪自动选择]
     icon: "https://raw.githubusercontent.com/Lanlan13-14/Rules/refs/heads/main/icon/all.png"
       
 
   - name: 🔷自动选择
     type: select
-    proxies: [🇭🇰自动选择, 🇸🇬自动选择, 🇺🇸自动选择, 🇯🇵自动选择, 
+    proxies: [🇭🇰自动选择, 🇻🇳自动选择, 🇸🇬自动选择, 🇺🇸自动选择, 🇯🇵自动选择, 
               🇰🇷自动选择, 🇬🇧自动选择, 🇫🇷自动选择, 🇩🇪自动选择]
     icon: "https://raw.githubusercontent.com/Lanlan13-14/Rules/refs/heads/main/icon/all.png"
       
 
   - name: 🟨手动选择
     type: select
-    proxies: [🇭🇰手动选择, 🇸🇬手动选择, 🇺🇸手动选择, 🇯🇵手动选择, 
+    proxies: [🇭🇰手动选择, 🇻🇳手动选择, 🇸🇬手动选择, 🇺🇸手动选择, 🇯🇵手动选择, 
               🇰🇷手动选择, 🇬🇧手动选择, 🇫🇷手动选择, 🇩🇪手动选择]
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png
 
@@ -433,7 +437,7 @@ proxy-groups:
 
   - name: 🟦手动选择
     type: select
-    proxies: [🇭🇰手动选择, 🇸🇬手动选择, 🇺🇸手动选择, 🇯🇵手动选择, 
+    proxies: [🇭🇰手动选择, 🇻🇳手动选择, 🇸🇬手动选择, 🇺🇸手动选择, 🇯🇵手动选择, 
               🇰🇷手动选择, 🇬🇧手动选择, 🇫🇷手动选择, 🇩🇪手动选择]
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png
 
@@ -455,10 +459,12 @@ proxy-groups:
               🔶自动选择, 🔷自动选择, 
               🟨手动选择, 🟦手动选择,
               🇭🇰手动选择, 🇸🇬手动选择, 
+              🇻🇳手动选择,
               🇺🇸手动选择, 🇬🇧手动选择, 
               🇯🇵手动选择, 🇰🇷手动选择,  
               🇫🇷手动选择, 🇩🇪手动选择, 
               🇭🇰自动选择, 🇭🇰故障转移, 
+              🇻🇳自动选择, 🇻🇳故障转移,
               🇸🇬自动选择, 🇸🇬故障转移, 
               🇺🇸自动选择, 🇺🇸故障转移,               
               🇯🇵自动选择, 🇯🇵故障转移, 
@@ -518,7 +524,12 @@ proxy-groups:
     <<: *Select
     filter: *FilterHK
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png'
-
+  
+  - name: 🇻🇳手动选择
+    <<: *Select
+    filter: *FilterVN
+    icon: https://raw.githubusercontent.com/Centralmatrix3/Matrix-io/master/Gallery/Color/VN.png
+  
   - name: 🇸🇬手动选择
     <<: *Select
     filter: *FilterSG
@@ -559,6 +570,12 @@ proxy-groups:
     <<: *FallBack
     filter: *FilterHK
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png'
+  
+  - name: 🇻🇳故障转移
+    <<: *FallBack
+    filter: *FilterVN
+    icon: https://raw.githubusercontent.com/Centralmatrix3/Matrix-io/master/Gallery/Color/VN.png
+
   - name: 🇸🇬故障转移
     <<: *FallBack
     filter: *FilterSG
@@ -600,10 +617,17 @@ proxy-groups:
       https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/AdBlack.png
 
   ### Auto
+  
   - name: 🇭🇰自动选择
     <<: *Auto
     filter: *FilterHK
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png'
+  
+  - name: 🇻🇳自动选择
+    <<: *FallBack
+    filter: *FilterVN
+    icon: https://raw.githubusercontent.com/Centralmatrix3/Matrix-io/master/Gallery/Color/VN.png
+  
   - name: 🇸🇬自动选择
     <<: *Auto
     filter: *FilterSG
