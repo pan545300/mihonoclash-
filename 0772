@@ -486,7 +486,7 @@ proxy-groups:
   - name: YouTube
     <<: *Select_Proxies
     filter: *FilterAll
-    icon: 'https://raw.githubusercontent.com/Orz-3/mini/master/Color/Google.png'
+    icon: https://gh-proxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
     
 
   - name: Emby
