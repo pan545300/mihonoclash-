@@ -1,0 +1,935 @@
+#Clash.Meta(mihomo)
+JNTM: &JNTM
+    interval: 43200
+    health-check:
+        enable: true
+        url: 'https://www.gstatic.com/generate_204'
+        interval: 300
+        timeout: 5000
+        lazy: true
+        expected-status: 204
+
+# Proxy Providers
+proxy-providers:
+  订阅1:
+    url: 
+    type: http
+    <<: *JNTM
+    proxy: 🌐代理
+    override: 
+    additional-prefix: "自用"
+    
+  订阅2:
+    url: 
+    type: http
+    <<: *JNTM
+    proxy: 🌐代理
+    override:
+    additional-prefix: "备注"
+    filter: '^(?!.*(?i)(?:NEVER_MATCH)).*$'
+    
+  LandNode:
+    type: file
+    <<: *JNTM
+    override:
+      additional-prefix: "https://xiaoli0772.pages.dev/sub?token=0bbd726ae838f83b169c1efd5b12bfdf&clash"
+      dialer-proxy: 中转
+    path: './proxy_provider/LandNode.yaml'
+
+  OtherNode:
+    type: file
+    <<: *JNTM
+    path: './proxy_provider/OtherNode.yaml'
+
+# Global Configuration
+mixed-port: 7890
+socks-port: 0
+port: 0
+redir-port: 0
+tproxy-port: 0
+mode: rule
+log-level: info
+ipv6: true
+find-process-mode: always
+authentication: []
+skip-auth-prefixes:
+  - 127.0.0.1/32
+  - ::1/128
+
+allow-lan: true
+lan-disallowed-ips: []
+bind-address: "*"
+lan-allowed-ips:
+  - 0.0.0.0/0
+  - ::/0
+
+### External Controller
+external-controller: 0.0.0.0:7891
+external-ui: ui
+secret: ""
+external-ui-url: 'https://github.com/Zephyruso/zashboard/releases/latest/download/dist.zip'
+external-controller-cors:
+  allow-origins:
+    - "*"
+  allow-private-network: true
+
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+unified-delay: true
+tcp-concurrent: true
+global-client-fingerprint: chrome
+
+geodata-mode: true
+geo-auto-update: false
+geo-update-interval: 24
+geox-url:
+  geoip: 'https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat'
+  geosite: 'https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat'
+  mmdb: 'https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country-lite.mmdb'
+  asn: 'https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/GeoLite2-ASN.mmdb'
+
+# Tunnel Configuration
+tun:
+  enable: true
+  stack: mixed
+  device: mihomo
+  auto-route: true
+  auto-redirect: true
+  auto-detect-interface: true
+  dns-hijack:
+    - any:53
+    - tcp://any:53
+  strict-route: true
+  mtu: 1500
+  route-exclude-address: []
+
+# DNS Configuration
+dns:
+  enable: true
+  listen: "0.0.0.0:1053"
+  prefer-h3: false
+  use-hosts: true
+  use-system-hosts: true
+  respect-rules: false
+  ipv6: true
+  default-nameserver:
+    - "223.5.5.5"
+  enhanced-mode: "fake-ip"
+  fake-ip-range: "198.18.0.1/16"
+  fake-ip-filter:
+    - "*.lan"
+    - "localhost.ptlogin2.qq.com"
+  nameserver-policy:
+    www.baidu.com: "114.114.114.114"
+    +.internal.crop.com: "10.0.0.1"
+    geosite:cn: "https://doh.pub/dns-query"
+  nameserver:
+    - "https://doh.pub/dns-query"
+    - "https://dns.alidns.com/dns-query"
+  fallback:
+    - "tls://8.8.4.4"
+    - "tls://1.1.1.1"
+  proxy-server-nameserver:
+    - "https://doh.pub/dns-query"
+  fallback-filter:
+    geoip: true
+    geoip-code: "CN"
+  
+    ipcidr:
+      - "240.0.0.0/4"
+    domain:
+      - "+.google.com"
+      - "+.facebook.com"
+      - "+.youtube.com"
+# Sniffer Configuration
+sniffer:
+  enable: true
+  sniff:
+    HTTP:
+      ports:
+        - 80
+        - 8080-8880
+    TLS:
+      ports:
+        - 443
+        - 8443
+    QUIC:
+      ports:
+        - 443
+        - 8443
+proxies:
+  - name: KR-ss
+    type: ss
+    server: cf.130519.xyz
+    port: 443
+    cipher: none
+    password: 5fdbd3bf-4ba8-47f0-afec-4e7d5d626d2b
+    plugin: v2ray-plugin
+    plugin-opts:
+      mode: websocket
+      host: xiaoli0722.cc.cd
+      path: /5fdbd3bf-4ba8-47f0-afec-4e7d5d626d2b/?ed=2560
+      tls: true
+      peer: xiaoli0722.cc.cd
+      mux: false
+      allowInsecure: true
+    client-fingerprint: chrome
+  - {name: 官方域名 | Pages, server: pages.dev, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 官方域名 | R2, server: r2.dev, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 官方域名 | CDNJS, server: cdnjs.com, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 官方域名 | Analytics, server: static.cloudflareinsights.com, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 官方域名 | DNS, server: cloudflare-dns.com, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 官方域名 | ECH, server: cloudflare-ech.com, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 企业域名 | VISA, server: visa.com, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 企业域名 | Shopify, server: shopify.com, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 企业域名 | DigitalOcean, server: digitalocean.com, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 企业域名 | 香港AirPort, server: hongkongairport.com, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 企业域名 | Glassdoor, server: glassdoor.com, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 企业域名 | Udemy, server: udemy.com, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  
+  - {name: 教育域名 | 岭南大学, server: ln.edu.hk, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 教育域名 | 南洋理工, server: www.ntu.edu.sg, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 教育域名 | 牛津大学, server: www.ox.ac.uk, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 教育域名 | ResearchGate, server: www.researchgate.net, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 大佬维护 | MIYU, server: saas.sin.fan, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 大佬维护 | Sukka, server: skk.moe, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 大佬维护 | MingYu, server: bestcf.030101.xyz, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 大佬维护 | QMS, server: cu.877774.xyz, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 大佬维护 | CMLiu, server: cf.090227.xyz, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 大佬维护 | KTFF, server: cf.tencentapp.cn, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 大佬维护 | vvHan, server: ip.cf.cname.vvhan.com, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: VISA中国, server: www.visa.cn, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: VISA香港, server: www.visa.com.hk, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: VISA美国, server: usa.visa.com, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 育碧商城, server: store.ubi.com, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 移动 | FRA | 187ms | 260mbps, server: 162.159.160.4, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 移动 | LAX | 200ms | 260mbps, server: 172.67.119.204, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 移动 | SJC | 197ms | 260mbps, server: 172.67.127.0, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 移动 | HKG | 56ms | 260mbps, server: 198.41.208.28, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 移动 | HKG | 62ms | 255mbps, server: 198.41.209.57, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 电信 | LAX | 153ms | 250mbps, server: 104.16.120.64, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 电信 | SJC | 152ms | 235mbps, server: 104.16.186.45, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 电信 | SJC | 135ms | 230mbps, server: 104.16.1.160, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 电信 | FRA | 156ms | 215mbps, server: 104.27.79.237, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 电信 | SJC | 160ms | 215mbps, server: 104.19.181.147, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 联通 | FRA | 187ms | 260mbps, server: 162.159.160.4, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 联通 | LAX | 200ms | 260mbps, server: 172.67.119.204, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 联通 | SJC | 197ms | 260mbps, server: 172.67.127.0, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 联通 | HKG | 56ms | 260mbps, server: 198.41.208.28, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 联通 | HKG | 62ms | 255mbps, server: 198.41.209.57, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 🇰🇷 KR🐲™️【免费共享】 9, server: 175.213.209.189, port: 12318, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: "/proxyip=144.24.73.232,158.180.72.60,129.154.50.159,152.67.208.8,193.123.233.168,140.238.17.157,146.56.173.243,64.110.71.6", headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: 🇰🇷 KR🐲™️【免费共享】 10, server: 221.145.190.14, port: 11434, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: "/proxyip=144.24.73.232,158.180.72.60,129.154.50.159,152.67.208.8,193.123.233.168,140.238.17.157,146.56.173.243,64.110.71.6", headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: 🇰🇷 KR🐲™️【免费共享】 3, server: 211.248.156.161, port: 21271, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: "/proxyip=144.24.73.232,158.180.72.60,129.154.50.159,152.67.208.8,193.123.233.168,140.238.17.157,146.56.173.243,64.110.71.6", headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: 🇳🇱荷兰NL4, server: 93.113.171.210, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /proxyip=ProxyIP.HK.CMLiussss.net, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: 🇳🇱荷兰NL3, server: 146.185.156.65, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /proxyip=ProxyIP.HK.CMLiussss.net, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: 🇳🇱荷兰NL2, server: 95.85.42.135, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /proxyip=ProxyIP.HK.CMLiussss.net, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: 🇫🇷法国FR2, server: 54.37.39.40, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /proxyip=ProxyIP.HK.CMLiussss.net, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: 🇫🇷法国FR1, server: 72.56.52.84, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /proxyip=ProxyIP.HK.CMLiussss.net, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: 🇫🇮芬兰FI2, server: 64.188.78.98, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /proxyip=ProxyIP.HK.CMLiussss.net, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: 🇫🇮芬兰FI1, server: 79.137.248.247, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /proxyip=ProxyIP.HK.CMLiussss.net, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: 🇰🇷 | KR1, server: 121.158.182.66, port: 12530, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 🇰🇷 | KR2 , server: 112.160.59.185, port: 16088, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 🇳🇱 NL|官方优选|214ms, server: 188.114.98.43, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /proxyip=ProxyIP.SG.CMLiussss.Net, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 🇳🇱 NL|官方优选|227ms, server: 188.114.99.254, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /proxyip=ProxyIP.SG.CMLiussss.Net, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 🇬🇧官方优选24, server: 173.245.58.126, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: 🇬🇧官方优选25, server: 108.162.198.154, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: 🇬🇧官方优选23, server: 108.162.198.186, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: 🇬🇧官方优选21, server: 162.159.153.222, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: 🇬🇧官方优选22, server: 104.19.49.180, port: 8443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: 🇩🇪DE|官方优选|179ms, server: 162.159.153.125, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 🇩🇪DE|官方优选|181ms, server: 162.159.153.53, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 🇩🇪DE|官方优选|182ms, server: 162.159.152.153, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 🇩🇪DE|官方优选|177ms, server: 172.67.75.160, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 🇩🇪DE|官方优选|178ms, server: 172.67.77.190, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: xiaoli0772.pages.dev}}}
+  - {name: 🇸🇬 SG|官方优选|75ms, server: 173.245.58.223, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: "/proxyip=144.24.73.232,158.180.72.60,129.154.50.159,152.67.208.8,193.123.233.168,140.238.17.157,146.56.173.243,64.110.71.6", headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}} 
+  - {name: 🇸🇬 SG|官方优选|76ms 1, server: 162.159.16.90, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: "/proxyip=144.24.73.232,158.180.72.60,129.154.50.159,152.67.208.8,193.123.233.168,140.238.17.157,146.56.173.243,64.110.71.6", headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: 🇸🇬 SG|官方优选|76ms 2, server: 108.162.195.161, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: "/proxyip=144.24.73.232,158.180.72.60,129.154.50.159,152.67.208.8,193.123.233.168,140.238.17.157,146.56.173.243,64.110.71.6", headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: 🇸🇬 SG|官方优选|76ms 3, server: 173.245.58.70, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: "/proxyip=144.24.73.232,158.180.72.60,129.154.50.159,152.67.208.8,193.123.233.168,140.238.17.157,146.56.173.243,64.110.71.6", headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: 🇸🇬 SG|官方优选|76ms 4, server: 162.159.15.45, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: "/proxyip=144.24.73.232,158.180.72.60,129.154.50.159,152.67.208.8,193.123.233.168,140.238.17.157,146.56.173.243,64.110.71.6", headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: 🇺🇸 US|官方优选|154ms 3, server: 103.21.244.249, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: "/proxyip=123.58.199.241,161.248.31.35,160.22.17.48,160.22.16.187,163.61.75.21", headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: 🇺🇸 US|官方优选|155ms, server: 104.19.32.102, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: "/proxyip=123.58.199.241,161.248.31.35,160.22.17.48,160.22.16.187,163.61.75.21", headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: 🇺🇸 US|官方优选|155ms 2, server: 141.101.114.54, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: "/proxyip=123.58.199.241,161.248.31.35,160.22.17.48,160.22.16.187,163.61.75.21", headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: 🇺🇸 US|官方优选|151ms, server: 104.17.112.22, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: "/proxyip=123.58.199.241,161.248.31.35,160.22.17.48,160.22.16.187,163.61.75.21", headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: 🇺🇸 US|官方优选|152ms, server: 141.101.114.144, port: 443, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: "/proxyip=123.58.199.241,161.248.31.35,160.22.17.48,160.22.16.187,163.61.75.21", headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: 🇯🇵 JP|官方优选|60ms 3, server: 162.159.39.188, port: 2087, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: "/proxyip=144.24.73.232,158.180.72.60,129.154.50.159,152.67.208.8,193.123.233.168,140.238.17.157,146.56.173.243,64.110.71.6", headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: 🇯🇵 JP|官方优选|60ms 4, server: 108.162.198.246, port: 2087, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: "/proxyip=144.24.73.232,158.180.72.60,129.154.50.159,152.67.208.8,193.123.233.168,140.238.17.157,146.56.173.243,64.110.71.6", headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: 🇯🇵 JP|官方优选|61ms, server: 108.162.198.58, port: 2087, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: "/proxyip=144.24.73.232,158.180.72.60,129.154.50.159,152.67.208.8,193.123.233.168,140.238.17.157,146.56.173.243,64.110.71.6", headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: 🇯🇵 JP|官方优选|56ms, server: 108.162.198.19, port: 2087, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: "/proxyip=144.24.73.232,158.180.72.60,129.154.50.159,152.67.208.8,193.123.233.168,140.238.17.157,146.56.173.243,64.110.71.6", headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: 🇯🇵 JP|官方优选|58ms, server: 108.162.198.75, port: 2087, type: vless, uuid: 2e14faa2-71aa-4dc6-8ba1-03beeca75848, tls: true, skip-cert-verify: false, servername: xiaoli0772.pages.dev, client-fingerprint: chrome, network: ws, ws-opts: {path: "/proxyip=144.24.73.232,158.180.72.60,129.154.50.159,152.67.208.8,193.123.233.168,140.238.17.157,146.56.173.243,64.110.71.6", headers: {Host: xiaoli0772.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: 🇭🇰 移动-HKG-443-Trojan-WS-TLS, server: 104.16.246.204, port: 443, type: trojan, password: cee53ba2-31d6-4821-8bef-d55f2f05f120, sni: xiao07722-9mr.pages.dev, alpn: [h3%2Ch2%2Chttp%2F1.1], skip-cert-verify: false, network: ws, ws-opts: {path: "/?ed=2048", headers: {Host: xiao07722-9mr.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: 🇭🇰 移动-HKG-443-Trojan-WS-TLS 2, server: 104.17.152.117, port: 443, type: trojan, password: cee53ba2-31d6-4821-8bef-d55f2f05f120, sni: xiao07722-9mr.pages.dev, alpn: [h3%2Ch2%2Chttp%2F1.1], skip-cert-verify: false, network: ws, ws-opts: {path: "/?ed=2048", headers: {Host: xiao07722-9mr.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: 🇭🇰 移动-HKG-443-Trojan-WS-TLS 3, server: 104.17.188.85, port: 443, type: trojan, password: cee53ba2-31d6-4821-8bef-d55f2f05f120, sni: xiao07722-9mr.pages.dev, alpn: [h3%2Ch2%2Chttp%2F1.1], skip-cert-verify: false, network: ws, ws-opts: {path: "/?ed=2048", headers: {Host: xiao07722-9mr.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: 🇭🇰 移动-HKG-443-Trojan-WS-TLS 4, server: 104.17.152.21, port: 443, type: trojan, password: cee53ba2-31d6-4821-8bef-d55f2f05f120, sni: xiao07722-9mr.pages.dev, alpn: [h3%2Ch2%2Chttp%2F1.1], skip-cert-verify: false, network: ws, ws-opts: {path: "/?ed=2048", headers: {Host: xiao07722-9mr.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {name: 🇭🇰 移动-HKG-443-Trojan-WS-TLS 5, server: 104.17.60.206, port: 443, type: trojan, password: cee53ba2-31d6-4821-8bef-d55f2f05f120, sni: xiao07722-9mr.pages.dev, alpn: [h3%2Ch2%2Chttp%2F1.1], skip-cert-verify: false, network: ws, ws-opts: {path: "/?ed=2048", headers: {Host: xiao07722-9mr.pages.dev}}, ech-opts: {enable: true, query-server-name: cloudflare-ech.com}}
+  - {"name":"北京电信","server":"220.181.33.174","type":"http","port":443,"username":"","password":"","skip-cert-verify":true,"headers":{"X-T5-Auth":"683556433","Host":"153.3.236.22:443","User-Agent":"okhttp/3.11.0 Dalvik/2.1.0 (Linux; U; Android 11; Redmi K30 5G Build/RKQ1.200826.002) baiduboxapp/11.0.5.12 (Baidu; P1 11)"}}
+  - {"name":"北京电信1","server":"220.181.7.1","type":"http","port":443,"username":"","password":"","skip-cert-verify":true,"headers":{"X-T5-Auth":"683556433","Host":"153.3.236.22:443","User-Agent":"okhttp/3.11.0 Dalvik/2.1.0 (Linux; U; Android 11; Redmi K30 5G Build/RKQ1.200826.002) baiduboxapp/11.0.5.12 (Baidu; P1 11)"}}
+  - {"name":"北京电信2","server":"220.181.111.189","type":"http","port":443,"username":"","password":"","skip-cert-verify":true,"headers":{"X-T5-Auth":"683556433","Host":"153.3.236.22:443","User-Agent":"okhttp/3.11.0 Dalvik/2.1.0 (Linux; U; Android 11; Redmi K30 5G Build/RKQ1.200826.002) baiduboxapp/11.0.5.12 (Baidu; P1 11)"}}
+  - {"name":"南京电信","server":"180.101.50.249","type":"http","port":443,"username":"","password":"","skip-cert-verify":true,"headers":{"X-T5-Auth":"683556433","Host":"153.3.236.22:443","User-Agent":"okhttp/3.11.0 Dalvik/2.1.0 (Linux; U; Android 11; Redmi K30 5G Build/RKQ1.200826.002) baiduboxapp/11.0.5.12 (Baidu; P1 11)"}}
+  - {"name":"南京电信1","server":"180.101.50.208","type":"http","port":443,"username":"","password":"","skip-cert-verify":true,"headers":{"X-T5-Auth":"683556433","Host":"153.3.236.22:443","User-Agent":"okhttp/3.11.0 Dalvik/2.1.0 (Linux; U; Android 11; Redmi K30 5G Build/RKQ1.200826.002) baiduboxapp/11.0.5.12 (Baidu; P1 11)"}}
+  - {"name":"广州电信","server":"14.215.182.75","type":"http","port":443,"username":"","password":"","skip-cert-verify":true,"headers":{"X-T5-Auth":"683556433","Host":"153.3.236.22:443","User-Agent":"okhttp/3.11.0 Dalvik/2.1.0 (Linux; U; Android 11; Redmi K30 5G Build/RKQ1.200826.002) baiduboxapp/11.0.5.12 (Baidu; P1 11)"}}
+  - {"name":"苏州联通","server":"157.0.146.158","type":"http","port":443,"username":"","password":"","skip-cert-verify":true,"headers":{"X-T5-Auth":"683556433","Host":"153.3.236.22:443","User-Agent":"okhttp/3.11.0 Dalvik/2.1.0 (Linux; U; Android 11; Redmi K30 5G Build/RKQ1.200826.002) baiduboxapp/11.0.5.12 (Baidu; P1 11)"}}
+  - {"name":"保定联通","server":"110.242.70.68","type":"http","port":443,"username":"","password":"","skip-cert-verify":true,"headers":{"X-T5-Auth":"683556433","Host":"153.3.236.22:443","User-Agent":"okhttp/3.11.0 Dalvik/2.1.0 (Linux; U; Android 11; Redmi K30 5G Build/RKQ1.200826.002) baiduboxapp/11.0.5.12 (Baidu; P1 11)"}}
+  - {"name":"保定联通1","server":"110.242.70.69","type":"http","port":443,"username":"","password":"","skip-cert-verify":true,"headers":{"X-T5-Auth":"683556433","Host":"153.3.236.22:443","User-Agent":"okhttp/3.11.0 Dalvik/2.1.0 (Linux; U; Android 11; Redmi K30 5G Build/RKQ1.200826.002) baiduboxapp/11.0.5.12 (Baidu; P1 11)"}}
+  - {"name":"广州联通","server":"163.177.17.6","type":"http","port":443,"username":"","password":"","skip-cert-verify":true,"headers":{"X-T5-Auth":"683556433","Host":"153.3.236.22:443","User-Agent":"okhttp/3.11.0 Dalvik/2.1.0 (Linux; U; Android 11; Redmi K30 5G Build/RKQ1.200826.002) baiduboxapp/11.0.5.12 (Baidu; P1 11)"}}
+  - {"name":"广州联通1","server":"163.177.17.189","type":"http","port":443,"username":"","password":"","skip-cert-verify":true,"headers":{"X-T5-Auth":"683556433","Host":"153.3.236.22:443","User-Agent":"okhttp/3.11.0 Dalvik/2.1.0 (Linux; U; Android 11; Redmi K30 5G Build/RKQ1.200826.002) baiduboxapp/11.0.5.12 (Baidu; P1 11)"}}
+  - {"name":"南京联通","server":"153.3.237.117","type":"http","port":443,"username":"","password":"","skip-cert-verify":true,"headers":{"X-T5-Auth":"683556433","Host":"153.3.236.22:443","User-Agent":"okhttp/3.11.0 Dalvik/2.1.0 (Linux; U; Android 11; Redmi K30 5G Build/RKQ1.200826.002) baiduboxapp/11.0.5.12 (Baidu; P1 11)"}}
+  
+  - {"name":"广州移动","server":"183.240.98.84","type":"http","port":443,"username":"","password":"","skip-cert-verify":true,"headers":{"X-T5-Auth":"683556433","Host":"153.3.236.22:443","User-Agent":"okhttp/3.11.0 Dalvik/2.1.0 (Linux; U; Android 11; Redmi K30 5G Build/RKQ1.200826.002) baiduboxapp/11.0.5.12 (Baidu; P1 11)"}}
+  - {"name":"南京移动","server":"36.155.169.188","type":"http","port":443,"username":"","password":"","skip-cert-verify":true,"headers":{"X-T5-Auth":"683556433","Host":"153.3.236.22:443","User-Agent":"okhttp/3.11.0 Dalvik/2.1.0 (Linux; U; Android 11; Redmi K30 5G Build/RKQ1.200826.002) baiduboxapp/11.0.5.12 (Baidu; P1 11)"}}
+
+# Node Filters
+FilterHK: &FilterHK 
+  '^(?=.*((?i)(香港|🇭🇰)))(?!.*((?i)(🔗|实验))).*$'
+  
+FilterJP: &FilterJP 
+  '^(?=.*((?i)(日本|🇯🇵)))(?!.*((?i)(🔗|实验))).*$'
+
+FilterKR: &FilterKR 
+  '^(?=.*((?i)(韩国|🇰🇷)))(?!.*((?i)(🔗|实验))).*$'
+
+FilterSG: &FilterSG 
+  '^(?=.*((?i)(师城|🇸🇬)))(?!.*((?i)(🔗|实验))).*$'
+
+FilterUS: &FilterUS 
+  '^(?=.*((?i)(美国|🇺🇸)))(?!.*((?i)(🔗|实验))).*$'
+
+FilterUK: &FilterUK 
+  '^(?=.*((?i)(英国|🇬🇧)))(?!.*((?i)(🔗|实验))).*$'
+
+FilterAU: &FilterAU 
+  '^(?=.*((?i)(澳大利亚|🇦🇺)))(?!.*((?i)(🔗|实验))).*$'
+
+FilterFR: &FilterFR 
+  '^(?=.*((?i)(法国|🇫🇷)))(?!.*((?i)(🔗|实验))).*$'
+
+FilterDE: &FilterDE 
+  '^(?=.*((?i)(德国|🇩🇪)))(?!.*((?i)(🔗|实验))).*$'
+
+FilterTW: &FilterTW 
+  '^(?=.*((?i)(台湾|🇹🇼)))(?!.*((?i)(🔗|实验))).*$'
+
+FilterOthers: &FilterOthers 
+  '^(?!.*((?i)(香港|🇭🇰|台湾|🇹🇼|日本|🇯🇵|师城|🇸🇬|美国|🇺🇸|德国|🇩🇪|英国|🇬🇧|韩国|🇰🇷|法国|🇫🇷|澳大利亚|🇦🇺)))(?!.*((?i)(🔗|实验))).*$'
+
+FilterExperiment: &FilterExperiment 
+  '^(?=.*((?i)(实验)))(?!.*((?i)(🔗))).*$'
+
+FilterAll: &FilterAll 
+  '^(?!.*((?i)(🔗|实验))).*$'
+
+# Proxy Group Templates
+Select: &Select
+  type: select
+  disable-udp: false
+  hidden: false
+  include-all: true
+
+Auto: &Auto
+  type: url-test
+  url: 'https://www.gstatic.com/generate_204'
+  expected-status: 204
+  interval: 300
+  timeout: 5000
+  lazy: true
+  tolerance: 50
+  disable-udp: false
+  hidden: false
+  include-all: true
+
+FallBack: &FallBack
+  type: fallback
+  url: 'https://www.gstatic.com/generate_204'
+  expected-status: 204
+  interval: 300
+  timeout: 5000
+  lazy: true
+  disable-udp: false
+  hidden: false
+  include-all: true
+
+Select_Proxies: &Select_Proxies
+  type: select
+  disable-udp: false
+  hidden: false
+  include-all: true
+  proxies: [🌐全球代理, 🔗链式代理, DIRECT, 🚒阻断, 
+            🟨手动选择, 🟦手动选择, 
+            🟢故障转移, 🟣故障转移, 
+            🔶自动选择, 🔷自动选择, 
+            🇭🇰手动选择, 🇸🇬手动选择, 
+            🇺🇸手动选择, 🇬🇧手动选择, 
+            🇯🇵手动选择, 🇰🇷手动选择,  
+            🇫🇷手动选择, 🇩🇪手动选择, 
+            🇭🇰自动选择, 🇭🇰故障转移, 
+            🇸🇬自动选择, 🇸🇬故障转移, 
+            🇺🇸自动选择, 🇺🇸故障转移,            
+            🇯🇵自动选择, 🇯🇵故障转移, 
+            🇰🇷自动选择, 🇰🇷故障转移,                          
+            🇬🇧自动选择, 🇬🇧故障转移, 
+            🇫🇷自动选择, 🇫🇷故障转移, 
+            🇩🇪自动选择, 🇩🇪故障转移, 
+            🚑绕过]
+
+# Proxy Groups
+proxy-groups:
+  ### MAIN
+  - name: 🌐全球代理
+    type: select
+    include-all: true
+    proxies: [🟢故障转移, 🟣故障转移, 
+              📋手动全部, 🧩手动其他, 
+              🟨手动选择, 🟦手动选择, 
+              🔶自动选择, 🔷自动选择, 
+              📋自动全部, 📋回退全部, 
+              🧩自动其他, 🧩回退其他, 
+              🔗链式代理, DIRECT, 🚒阻断, 🚑绕过]
+    icon: 'https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/Static.png'
+
+  - name: 🟢故障转移
+    type: select
+    proxies: [🇭🇰故障转移, 🇸🇬故障转移, 🇺🇸故障转移, 🇯🇵故障转移, 
+              🇰🇷故障转移, 🇬🇧故障转移, 🇫🇷故障转移, 🇩🇪故障转移]
+    icon: 'https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hijacking.png'
+
+  - name: 🟣故障转移
+    type: select
+    proxies: [🇭🇰故障转移, 🇸🇬故障转移, 🇺🇸故障转移,  🇯🇵故障转移, 
+              🇰🇷故障转移, 🇬🇧故障转移, 🇫🇷故障转移, 🇩🇪故障转移]
+    icon: 'https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hijacking.png'
+
+  - name: 🔶自动选择
+    type: select
+    proxies: [🇭🇰自动选择, 🇸🇬自动选择, 🇺🇸自动选择,  🇯🇵自动选择, 
+              🇰🇷自动选择, 🇬🇧自动选择, 🇫🇷自动选择, 🇩🇪自动选择]
+    icon: "https://raw.githubusercontent.com/Lanlan13-14/Rules/refs/heads/main/icon/all.png"
+      
+
+  - name: 🔷自动选择
+    type: select
+    proxies: [🇭🇰自动选择, 🇸🇬自动选择, 🇺🇸自动选择, 🇯🇵自动选择, 
+              🇰🇷自动选择, 🇬🇧自动选择, 🇫🇷自动选择, 🇩🇪自动选择]
+    icon: "https://raw.githubusercontent.com/Lanlan13-14/Rules/refs/heads/main/icon/all.png"
+      
+
+  - name: 🟨手动选择
+    type: select
+    proxies: [🇭🇰手动选择, 🇸🇬手动选择, 🇺🇸手动选择, 🇯🇵手动选择, 
+              🇰🇷手动选择, 🇬🇧手动选择, 🇫🇷手动选择, 🇩🇪手动选择]
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png
+
+  - name: 广告拦截
+    type: select
+    icon: >-
+      https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/AdBlack.png
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    proxies: 
+    - 🚑绕过
+    - 🚒阻断
+    - DIRECT
+
+  - name: 🟦手动选择
+    type: select
+    proxies: [🇭🇰手动选择, 🇸🇬手动选择, 🇺🇸手动选择, 🇯🇵手动选择, 
+              🇰🇷手动选择, 🇬🇧手动选择, 🇫🇷手动选择, 🇩🇪手动选择]
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png
+
+  - name: 🧩手动其他
+    <<: *Select
+    filter: *FilterOthers
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Filter.png'
+
+  - name: 📋手动全部
+    <<: *Select
+    filter: *FilterAll
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Available.png'
+
+  ### Dialer Proxy
+  - name: 中转
+    <<: *Select
+    filter: *FilterAll
+    proxies: [🟢故障转移, 🟣故障转移, 
+              🔶自动选择, 🔷自动选择, 
+              🟨手动选择, 🟦手动选择,
+              🇭🇰手动选择, 🇸🇬手动选择, 
+              🇺🇸手动选择, 🇬🇧手动选择, 
+              🇯🇵手动选择, 🇰🇷手动选择,  
+              🇫🇷手动选择, 🇩🇪手动选择, 
+              🇭🇰自动选择, 🇭🇰故障转移, 
+              🇸🇬自动选择, 🇸🇬故障转移, 
+              🇺🇸自动选择, 🇺🇸故障转移,               
+              🇯🇵自动选择, 🇯🇵故障转移, 
+              🇰🇷自动选择, 🇰🇷故障转移,                          
+              🇬🇧自动选择, 🇬🇧故障转移, 
+              🇫🇷自动选择, 🇫🇷故障转移, 
+              🇩🇪自动选择, 🇩🇪故障转移]
+    icon: >-
+          https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png
+
+  - name: 落地
+    <<: *Select
+    icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Large/Network_2.png
+    filter: '^(?=.*(🔗)).*$'
+    
+  ### Services
+  
+
+  - name: YouTube
+    <<: *Select_Proxies
+    filter: *FilterAll
+    icon: 'https://raw.githubusercontent.com/Orz-3/mini/master/Color/Google.png'
+    
+
+  - name: Emby
+    <<: *Select_Proxies
+    filter: *FilterAll
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Emby.png
+
+  - name: Cloudflare
+    <<: *Select_Proxies
+    filter: *FilterAll
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Cloudflare.png'
+
+
+  - name: Telegram
+    <<: *Select_Proxies
+    filter: *FilterAll
+    icon: 'https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/Telegram.png'
+
+  
+  - name: GitHub
+    <<: *Select_Proxies
+    filter: *FilterAll
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/GitHub.png'
+
+  - name: Google
+    <<: *Select_Proxies
+    filter: *FilterAll
+    icon: 'https://raw.githubusercontent.com/Orz-3/mini/master/Color/Google.png'
+
+  
+  
+  
+  ### Select
+  - name: 🇭🇰手动选择
+    <<: *Select
+    filter: *FilterHK
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png'
+
+  - name: 🇸🇬手动选择
+    <<: *Select
+    filter: *FilterSG
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png'
+
+  - name: 🇺🇸手动选择
+    <<: *Select
+    filter: *FilterUS
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png'
+
+  - name: 🇯🇵手动选择
+    <<: *Select
+    filter: *FilterJP
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png'
+
+  - name: 🇰🇷手动选择
+    <<: *Select
+    filter: *FilterKR
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Korea.png'
+
+  - name: 🇬🇧手动选择
+    <<: *Select
+    filter: *FilterUK
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_Kingdom.png'
+
+  - name: 🇫🇷手动选择
+    <<: *Select
+    filter: *FilterFR
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/France.png'
+
+  - name: 🇩🇪手动选择
+    <<: *Select
+    filter: *FilterDE
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Germany.png'
+
+  ### FallBack
+  - name: 🇭🇰故障转移
+    <<: *FallBack
+    filter: *FilterHK
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png'
+  - name: 🇸🇬故障转移
+    <<: *FallBack
+    filter: *FilterSG
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png'
+  - name: 🇺🇸故障转移
+    <<: *FallBack
+    filter: *FilterUS
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png'
+  - name: 🇯🇵故障转移
+    <<: *FallBack
+    filter: *FilterJP
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png'
+
+  - name: 🇰🇷故障转移
+    <<: *FallBack
+    filter: *FilterKR
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Korea.png'
+  - name: 🇬🇧故障转移
+    <<: *FallBack
+    filter: *FilterUK
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_Kingdom.png'
+  - name: 🇫🇷故障转移
+    <<: *FallBack
+    filter: *FilterFR
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/France.png'
+  - name: 🇩🇪故障转移
+    <<: *FallBack
+    filter: *FilterDE
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Germany.png'
+  - name: 🧩回退其他
+    <<: *FallBack
+    filter: *FilterOthers
+    icon: >-
+      https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/AdBlack.png
+  - name: 📋回退全部
+    <<: *FallBack
+    filter: *FilterAll
+    icon: >-
+      https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/AdBlack.png
+
+  ### Auto
+  - name: 🇭🇰自动选择
+    <<: *Auto
+    filter: *FilterHK
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png'
+  - name: 🇸🇬自动选择
+    <<: *Auto
+    filter: *FilterSG
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png'
+  - name: 🇺🇸自动选择
+    <<: *Auto
+    filter: *FilterUS
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png'
+  - name: 🇯🇵自动选择
+    <<: *Auto
+    filter: *FilterJP
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png'
+  - name: 🇰🇷自动选择
+    <<: *Auto
+    filter: *FilterKR
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Korea.png'
+  - name: 🇬🇧自动选择
+    <<: *Auto
+    filter: *FilterUK
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_Kingdom.png'
+  - name: 🇫🇷自动选择
+    <<: *Auto
+    filter: *FilterFR
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/France.png'
+  - name: 🇩🇪自动选择
+    <<: *Auto
+    filter: *FilterDE
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Germany.png'
+  - name: 📋自动全部
+    <<: *Auto
+    filter: *FilterAll
+    icon: https://raw.githubusercontent.com/ifanrBook/ClashConfig/refs/heads/main/icon/iconselect96.png
+  
+  - name: 🧩自动其他
+    <<: *Auto
+    filter: *FilterOthers
+    icon: https://raw.githubusercontent.com/ifanrBook/ClashConfig/refs/heads/main/icon/iconselect96.png
+
+  
+  ### Hidden
+  - name: 🚑绕过
+    type: select
+    proxies: [PASS]
+    hidden: true
+
+  - name: 🚒阻断
+    type: select
+    proxies: [REJECT]
+    hidden: true
+
+  - name: 🔗链式代理
+    type: select
+    hidden: true
+    proxies: 
+      - 落地
+
+# Rule Providers
+rule-providers:
+  weixin:
+    type: http
+    behavior: domain
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Wechat.yaml
+    path: ./ruleset/weixin.yaml
+    interval: 86400
+
+  Kuaishou:
+    type: http
+    behavior: domain
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Kuaishou.yaml
+    path: ./ruleset/weixin.yaml
+    interval: 86400
+  
+  xiaohongshu:
+    type: http
+    behavior: domain
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@release/rule/Clash/XiaoHongShu/XiaoHongShu.yaml
+    path: ./ruleset/xiaohongshu.yaml
+    interval: 86400
+
+  proxy:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt"
+    path: ./ruleset/proxy.yaml
+    interval: 86400
+  # LAN
+  lan:
+    type: http
+    behavior: classical
+    interval: 43200
+    proxy: 🌐全球代理
+    url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Lan/Lan.yaml'
+    path: './rule_set/lan.yaml'
+
+  # ChinaDIRECT
+  chinadirect:
+    type: http
+    behavior: classical
+    interval: 43200
+    proxy: 🌐全球代理
+    url: 'https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@master/GeositeCN/GeositeCN.yaml'
+    path: './rule_set/chinadirect.yaml'
+  
+  # Other
+  gemini:
+    type: http
+    behavior: classical
+    interval: 43200
+    proxy: 🌐全球代理
+    url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Gemini/Gemini.yaml'
+    path: './rule_set/gemini.yaml'
+
+  googlefcm:
+    type: http
+    behavior: classical
+    interval: 43200
+    proxy: 🌐全球代理
+    url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/GoogleFCM/GoogleFCM.yaml'
+    path: './rule_set/googlefcm.yaml'
+    
+ 
+
+  pikpak:
+    type: http
+    behavior: classical
+    interval: 43200
+    proxy: 🌐全球代理
+    url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/PikPak/PikPak.yaml'
+    path: './rule_set/pikpak.yaml'
+
+  stream:
+    type: http
+    behavior: classical
+    interval: 43200
+    proxy: 🌐全球代理
+    url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/GlobalMedia/GlobalMedia.yaml'
+    path: './rule_set/stream.yaml'
+
+  telegram:
+    type: http
+    behavior: classical
+    interval: 43200
+    proxy: 🌐全球代理
+    url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Telegram/Telegram.yaml'
+    path: './rule_set/telegram.yaml'
+
+ 
+  
+
+  steam:
+    type: http
+    behavior: classical
+    interval: 43200
+    proxy: 🌐全球代理
+    url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Steam/Steam.yaml'
+    path: './rule_set/steam.yaml'
+
+  steam_cn:
+    type: http
+    behavior: classical
+    interval: 43200
+    proxy: 🌐全球代理
+    url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/SteamCN/SteamCN.yaml'
+    path: './rule_set/steam_cn.yaml'
+
+  discord:
+    type: http
+    behavior: classical
+    interval: 43200
+    proxy: 🌐全球代理
+    url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Discord/Discord.yaml'
+    path: './rule_set/discord.yaml'
+
+  spotify:
+    type: http
+    behavior: classical
+    interval: 43200
+    proxy: 🌐全球代理
+    url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Spotify/Spotify.yaml'
+    path: './rule_set/spotify.yaml'
+
+ 
+  openai:
+    type: http
+    behavior: classical
+    interval: 43200
+    proxy: 🌐全球代理
+    url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/OpenAI/OpenAI.yaml'
+    path: './rule_set/openai.yaml'
+
+  epic:
+    type: http
+    behavior: classical
+    interval: 43200
+    proxy: 🌐全球代理
+    url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Epic/Epic.yaml'
+    path: './rule_set/epic.yaml'
+
+  google:
+    type: http
+    behavior: classical
+    interval: 43200
+    proxy: 🌐全球代理
+    url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Google/Google.yaml'
+    path: './rule_set/google.yaml'
+
+  github:
+    type: http
+    behavior: classical
+    interval: 43200
+    proxy: 🌐全球代理
+    url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/GitHub/GitHub.yaml'
+    path: './rule_set/github.yaml'
+
+  youtube:
+    type: http
+    behavior: classical
+    interval: 43200
+    proxy: 🌐全球代理
+    url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/YouTube/YouTube.yaml'
+    path: './rule_set/youtube.yaml'
+
+  twitter:
+    type: http
+    behavior: classical
+    interval: 43200
+    proxy: 🌐全球代理
+    url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Twitter/Twitter.yaml'
+    path: './rule_set/twitter.yaml'
+
+  pornhub:
+    type: http
+    behavior: classical
+    interval: 43200
+    proxy: 🌐全球代理
+    url: 'https://raw.githubusercontent.com/dler-io/Rules/refs/heads/main/Egern/Provider/Media/Pornhub.yaml'
+    path: './rule_set/pornhub.yaml'
+
+  cloudflare:
+    type: http
+    behavior: classical
+    interval: 43200
+    proxy: 🌐全球代理
+    url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Cloudflare/Cloudflare.yaml'
+    path: './rule_set/cloudflare.yaml'
+
+ 
+  advertising:
+    type: http
+    behavior: classical
+    interval: 43200
+    proxy: 🌐全球代理
+    url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Advertising/Advertising.yaml'
+    path: './rule_set/advertising.yaml'
+
+  privacy:
+    type: http
+    behavior: classical
+    interval: 43200
+    proxy: 🌐全球代理
+    url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Privacy/Privacy.yaml'
+    path: './rule_set/privacy.yaml'
+
+  binance:
+    type: http
+    behavior: classical
+    interval: 43200
+    proxy: 🌐全球代理
+    url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Binance/Binance.yaml'
+    path: './rule_set/binance.yaml'
+
+# Rules
+rules:
+
+   # 本地网络直连
+  - PROCESS-NAME,subs-check.exe,DIRECT
+  - PROCESS-NAME,subs-check,DIRECT
+  - DOMAIN-SUFFIX,local,DIRECT
+  - IP-CIDR,127.0.0.0/8,DIRECT
+  - IP-CIDR,172.16.0.0/12,DIRECT
+  - IP-CIDR,192.168.0.0/16,DIRECT
+  - IP-CIDR,10.0.0.0/8,DIRECT
+  # ========== 本地网络和局域网 ==========
+  - IP-CIDR,100.64.0.0/10,DIRECT
+  - IP-CIDR,224.0.0.0/4,DIRECT
+  - IP-CIDR,169.254.0.0/16,DIRECT
+  - IP-CIDR,fe80::/10,DIRECT
+
+  # 广告屏蔽
+  - DOMAIN-KEYWORD,ad,REJECT
+  - DOMAIN-SUFFIX,doubleclick.net,REJECT
+  - DOMAIN-SUFFIX,googleadservices.com,REJECT
+  - DOMAIN-SUFFIX,BanAD.广告拦截,REJECT
+
+  # 国内网站直连
+  - DOMAIN-SUFFIX,baidu.com,DIRECT
+  - DOMAIN-SUFFIX,taobao.com,DIRECT
+  - DOMAIN-SUFFIX,qq.com,DIRECT
+  - DOMAIN-SUFFIX,weibo.com,DIRECT
+  - DOMAIN-SUFFIX,zhihu.com,DIRECT
+  - DOMAIN-SUFFIX,bilibili.com,DIRECT
+  - DOMAIN-SUFFIX,alipay.com,DIRECT
+  - DOMAIN-SUFFIX,wechat.com,DIRECT
+  - DOMAIN-SUFFIX,kuaishou.com,DIRECT
+  - DOMAIN-SUFFIX,weixin/com,DIRECT
+  - DOMAIN-SUFFIX,xiaohongshu,DIRECT
+  - DOMAIN-SUFFIX,Pinduoduo,DIRECT
+  
+  # GeoIP 分流
+  - GEOIP,CN,DIRECT
+  - GEOIP,PRIVATE,DIRECT
+
+  # 最终规则
+ 
+  - RULE-SET,advertising,🚒阻断  # 拦截广告
+  - RULE-SET,privacy,🚒阻断      # 拦截隐私追踪
+  - RULE-SET,lan,DIRECT
+  - RULE-SET,googlefcm,🇺🇸故障转移
+  - RULE-SET,telegram,Telegram
+  - RULE-SET,github,GitHub
+  - RULE-SET,gemini,Google
+  - RULE-SET,youtube,YouTube
+  - RULE-SET,google,Google
+  - RULE-SET,binance,🇺🇸自动选择
+  - RULE-SET,cloudflare,Cloudflare
+  - RULE-SET,chinadirect,DIRECT
+  - GEOSITE,cn,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,🌐全球代理
