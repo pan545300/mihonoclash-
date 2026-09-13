@@ -186,6 +186,7 @@ proxy-groups:
     use: [线路面板],icon: https://gh-proxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png,}
   - name: "广告拦截"
     type: select
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Advertising.png
     proxies: [REJECT, DIRECT]
   - name: "香港"
     <<: *select_base
