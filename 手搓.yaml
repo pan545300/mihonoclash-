@@ -1,0 +1,261 @@
+select_base1: &select_base
+  type: select
+  use: [三网运营]
+  lazy: true
+  proxies:
+    - "多线优化"
+    - "三网运营"
+    - "线路面板"
+select_base2: &select_base
+  type: select
+  use: [多线优化]
+  lazy: true
+  proxies:
+    - "多线优化"
+    - "三网运营"
+    - "线路面板"
+select_base13: &select_base
+  type: select
+  use: [线路面板]
+  lazy: true
+  proxies:
+    - "多线优化"
+    - "三网运营"
+    - "线路面板"
+
+urltest_base: &urltest_base
+  type: url-test
+  use: [多线优化,三网运营,线路面板]
+  url: http://www.gstatic.com/generate_204
+  interval: 300
+  tolerance: 50
+  timeout: 2000
+  lazy: true
+
+provider_base: &provider_base
+  type: http
+  interval: 3600
+  health-check:
+    enable: true
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    timeout: 2000
+  lazy: true
+rule_domain: &rule_domain
+  type: http
+  behavior: domain
+  format: yaml
+  interval: 86400
+rule_ip: &rule_ip
+  type: http
+  behavior: ipcidr
+  format: yaml
+  interval: 86400
+
+
+mixed-port: 7890
+allow-lan: false
+mode: rule
+log-level: warning
+ipv6: true
+unified-delay: true
+tcp-concurrent: true
+external-controller: 127.0.0.1:9090
+external-controller-cors:
+  allow-origins: ["*"]
+
+
+proxy-providers:
+  多线优化:
+    <<: *provider_base
+    url: "https://xiaoli-3tf.pages.dev/sub?token=401e3247b386c4223e9d2ac3a31851cd&b64"
+    path: ./cache/main_sub.yaml
+  三网运营:
+    <<: *provider_base
+    url: "https://xiao00772.pages.dev/81bf228e-4038-43d4-a219-d58f177f2590/sub?name=xiaoli&target=clash"
+    path: ./cache/main_sub1.yaml
+  线路面板:
+    <<: *provider_base
+    url: "https://xiao-6hh.pages.dev/sub/normal/ea992b9c-eaa9-4011-bd2e-be7f980633e1?app=clash#%F0%9F%92%A6%20BPB%20Normal"
+    path: ./cache/main_sub.yaml
+
+rule-providers:
+  google_domain:
+    url: >-
+      https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/google.yaml
+    path: ./ruleset/google_domain.yaml
+    behavior: domain
+    interval: 86400
+    format: yaml
+    type: http
+  telegram_domain:
+    url: >-
+      https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/telegram.yaml
+    path: ./ruleset/telegram_domain.yaml
+    behavior: domain
+    interval: 86400
+    format: yaml
+    type: http
+  cn_domain:
+    url: >-
+      https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/cn.yaml
+    path: ./ruleset/cn_domain.yaml
+    behavior: domain
+    interval: 86400
+    format: yaml
+    type: http
+  ad_domain:
+    <<: *rule_domain
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/mihomo@Alpha/docs/config/rules/reject.yaml
+  ad_ip:
+    <<: *rule_ip
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/mihomo@Alpha/docs/config/rules/reject-ip.yaml
+  china_domain:
+    <<: *rule_domain
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/mihomo@Alpha/docs/config/rules/cn.yaml
+  china_ip:
+    <<: *rule_ip
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/mihomo@Alpha/docs/config/rules/cn-ip.yaml
+
+
+proxy-groups:
+  - name: "模式切换"
+    type: select
+    icon: https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/Static.png
+    proxies:
+      - "多线优化"
+      - "三网运营"
+      - "线路面板"
+      - "香港"
+      - "日本"
+      - "韩国"
+      - "美国"
+      - "英国"
+      
+      - "澳洲"
+      - "狮城"
+      - "德国"
+      - "法国"
+      - "荷兰"
+      - "巴西"
+      
+      - "泰国"
+      - "印尼"
+      - "越南"
+      - "印度"
+
+  - name: "多线优化"
+    <<: *urltest_base
+    use: [多线优化]
+    icon: https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/Urltest.png
+  - name: "三网运营"
+    <<: *urltest_base
+    use: [三网运营]
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/SSID.png
+  - name: "线路面板"
+    <<: *urltest_base
+    use: [线路面板]
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/China.png
+  - icon: 'https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/Google.png'
+    name: 谷歌浏览
+    type: select
+    proxies:
+      - "多线优化"
+      - "三网运营"
+      - "线路面板"
+      - "香港"
+      - "日本"
+      - "韩国"
+      - "美国"
+      - "英国"
+      
+      - "澳洲"
+      - "狮城"
+      - "德国"
+      - "法国"
+      - "荷兰"
+      - "巴西"
+      
+      - "泰国"
+      - "印尼"
+      - "越南"
+      - "印度"
+  - {name: 油管平台, type: select, use: [线路面板],icon: https://gh-proxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png,}
+  - name: "香港"
+    <<: *select_base
+    filter: "(?i)hk|hongkong|香港"
+    icon: "https://gcore.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png"
+  - name: "日本"
+    <<: *select_base
+    filter: "(?i)jp|japan|日本"
+    icon: "https://gcore.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png"
+  - name: "韩国"
+    <<: *select_base
+    filter: "(?i)kr|korea|韩国"
+    icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Korea.png"
+  - name: "美国"
+    <<: *select_base
+    filter: "(?i)us|usa|united|美国"
+    icon: "https://gcore.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png"
+  - name: "英国"
+    <<: *select_base
+    filter: "(?i)uk|gb|britain|英国"
+    icon: "https://gcore.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_Kingdom.png"
+  
+  - name: "澳洲"
+    <<: *select_base
+    filter: "(?i)au|australia|澳洲|澳大利亚"
+    icon: "https://gcore.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Australia.png"
+  - name: "狮城"
+    <<: *select_base
+    filter: "(?i)sg|singapore|新加坡"
+    icon: "https://gcore.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png"
+  - name: "德国"
+    <<: *select_base
+    filter: "(?i)de|germany|德国"
+    icon: "https://gcore.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Germany.png"
+  - name: "法国"
+    <<: *select_base
+    filter: "(?i)fr|france|法国"
+    icon: "https://gcore.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/France.png"
+  - name: "荷兰"
+    <<: *select_base
+    filter: "(?i)nl|netherlands|荷兰"
+    icon: "https://gcore.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netherlands.png"
+  - name: "巴西"
+    <<: *select_base
+    filter: "(?i)br|brazil|巴西"
+    icon: "https://gcore.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Brazil.png"
+  
+  - name: "泰国"
+    <<: *select_base
+    filter: "(?i)th|thailand|泰国"
+    icon: "https://gcore.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Thailand.png"
+  - name: "印尼"
+    <<: *select_base
+    filter: "(?i)id|indonesia|印尼|印度尼西亚"
+    icon: "https://gcore.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Indonesia.png"
+  - name: "越南"
+    <<: *select_base
+    filter: "(?i)vn|vietnam|越南"
+    icon: "https://gcore.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Vietnam.png"
+  - name: "印度"
+    <<: *select_base
+    filter: "(?i)in|india|印度"
+    icon: "https://gcore.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/India.png"
+
+  
+  - name: "广告拦截"
+    type: select
+    proxies: [REJECT, DIRECT]
+
+    
+
+rules:
+  - RULE-SET,ad_domain,广告拦截
+  - RULE-SET,ad_ip,广告拦截
+  - RULE-SET,china_domain,DIRECT
+  - RULE-SET,china_ip,DIRECT
+  - GEOSITE,cn,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,模式切换
