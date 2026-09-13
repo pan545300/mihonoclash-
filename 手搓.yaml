@@ -191,6 +191,10 @@ proxy-groups:
     <<: *select_base
     filter: "(?i)hk|hongkong|香港"
     icon: "https://gcore.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png"
+  - name: "越南"
+    <<: *select_base
+    filter: "(?i)vn|vietnam|越南"
+    icon: "https://gcore.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png"
   - name: "日本"
     <<: *select_base
     filter: "(?i)jp|japan|日本"
@@ -241,10 +245,7 @@ proxy-groups:
     <<: *select_base
     filter: "(?i)id|indonesia|印尼|印度尼西亚"
     icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/MY.png"
-  - name: "越南"
-    <<: *select_base
-    filter: "(?i)vn|vietnam|越南"
-    icon: "https://gcore.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png"
+  
   - name: "印度"
     <<: *select_base
     filter: "(?i)in|india|印度"
